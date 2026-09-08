@@ -1,0 +1,11 @@
+trigger:
+- main
+pool:
+    vmImage: ubuntu-latest
+steps:
+- script: |
+    echo "================================="
+    echo "Azure AKS Microservices Pipeline"
+    echo "GitHub -> Azure DevOps SUCCESS"
+    echo "================================="
+  displayName: "Test Pipeline Connection"    
