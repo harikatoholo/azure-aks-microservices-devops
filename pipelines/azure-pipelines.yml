@@ -1,11 +1,22 @@
 trigger:
 - main
+
 pool:
-    vmImage: ubuntu-latest
+  vmImage: ubuntu-latest
+
 steps:
+
+- task: NodeTool@0
+  displayName: "Install Node.js"
+  inputs:
+    versionSpec: "20.x"
+
 - script: |
-    echo "================================="
-    echo "Azure AKS Microservices Pipeline"
-    echo "GitHub -> Azure DevOps SUCCESS"
-    echo "================================="
-  displayName: "Test Pipeline Connection"    
+    cd app/catalog-service
+    npm ci
+  displayName: "Install Dependencies"
+
+- script: |
+    cd app/catalog-service
+    npm test
+  displayName: "Run Unit Tests"
