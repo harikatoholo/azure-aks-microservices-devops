@@ -20,3 +20,10 @@ steps:
     cd app/catalog-service
     npm test
   displayName: "Run Unit Tests"
+
+- task: PublishTestResults@2
+  displayName: "Publish Test Results"
+  inputs:
+    testResultsFormat: "JUnit"
+    testResultsFiles: "app/catalog-service/junit.xml"
+    failTaskOnFailedTests: true
